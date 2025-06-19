@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Our Political Agenda / हमारा राजनीतिक एजेंडा</title>
+<style>
+  /* Reset */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  /* Fonts and colors */
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+  body {
+    font-family: 'Poppins', sans-serif;
+    background: #f0f8ff;
+    color: #222;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  a {
+    color: #1e90ff;
+    text-decoration: none;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+
+  /* Layout */
+  header {
+    background: linear-gradient(90deg, #004aad, #0078e7);
+    color: white;
+    padding: 1rem 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 1001;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+
+  header h1 {
+    font-size: 1.8rem;
+    letter-spacing: 1.5px;
+    flex: 1 1 220px;
+    text-shadow: 0 0 8px rgba(0,123,255,0.7);
+  }
+
+  nav {
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 1.6rem;
+    flex-wrap: wrap;
+    flex: 2 1 auto;
+    justify-content: center;
+  }
+
+  nav a {
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    position: relative;
+    color: white;
+    padding: 0.2rem 0.5rem;
+  }
+
+  nav a:hover,
+  nav a.active {
+    background: #ffb347;
+    color: #004aad;
+    border-radius: 6px;
+    box-shadow: 0 0 12px #ffb347;
+  }
+
+  .lang-toggle {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    margin-left: auto;
+  }
+
+  .lang-btn {
+    background: transparent;
+    border: 2px solid white;
+    color: white;
+    font-weight: 700;
+    cursor: pointer;
+    border-radius: 6px;
+    padding: 0.3rem 0.8rem;
+    font-size: 0.95rem;
+    transition: background-color 0.3s, color 0.3s;
+    user-select: none;
+    box-shadow: 0 0 4px rgba(255 179 71 / 0.6);
+    text-shadow: 0 0 4px rgba(255 179 71 / 0.5);
+  }
+
+  .lang-btn.active,
+  .lang-btn:hover {
+    background: #ffb347;
+    color: #004aad;
+    border-color: #ffb347;
+    box-shadow: 0 0 15px #ffb347;
+    text-shadow: none;
+  }
+
+  #loginBtn {
+    margin-left: 1rem;
+    background-color: #ffb347;
+    border: none;
+    color: #004aad;
+    font-weight: 800;
+    border-radius: 8px;
+    padding: 0.4rem 1.2rem;
+    cursor: pointer;
+    font-size: 1.1rem;
+    box-shadow: 0 4px 18px rgb(255 179 71 / 0.9);
+    transition: background-color 0.3s ease;
+    text-shadow: 0 0 5px rgba(0, 74, 173, 0.7);
+  }
+  #loginBtn:hover {
+    background-color: #cc8c23;
+  }
+
+  main {
+    max-width: 960px;
+    margin: 2rem auto 4rem auto;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0px 10px 25px rgba(0,0,0,0.12);
+    padding: 2.5rem 3rem 3rem 3rem;
+    position: relative;
+  }
+
+  section {
+    margin-bottom: 3.5rem;
+    position: relative;
+  }
+
+  h2 {
+    color: #004aad;
+    margin-bottom: 1.2rem;
+    border-bottom: 4px solid #ffb347;
+    padding-bottom: 0.5rem;
+    font-weight: 800;
+    letter-spacing: 1.1px;
+  }
+
+  /* Hero Section */
+  .hero {
+    background: url('https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?auto=format&fit=crop&w=1200&q=80') no-repeat center/cover;
+    color: white;
+    text-align: center;
+    padding: 6rem 1rem 7rem 1rem;
+    border-radius: 10px;
+    box-shadow: inset 0 0 0 1000px rgba(0, 74, 173, 0.81);
+    margin-bottom: 3rem;
+    text-shadow: 1px 1px 10px rgba(0,0,0,0.9);
+  }
+
+  .hero h1 {
+    font-size: 2.8rem;
+    margin-bottom: 0.8rem;
+    animation: glow 1.6s ease-in-out infinite alternate;
+  }
+  .hero p {
+    font-size: 1.3rem;
+    font-weight: 700;
+    max-width: 780px;
+    margin: 0 auto;
+    animation: fadeIn 2.2s ease forwards;
+  }
+
+  @keyframes glow {
+    from {
+      text-shadow:
+        0 0 4px #ffb347,
+        0 0 10px #ffb347,
+        0 0 20px #ffb347,
+        0 0 30px #ffb347,
+        0 0 40px #ffb347;
+      color: #fff3cc;
+    }
+    to {
+      text-shadow:
+        0 0 12px #ffb347,
+        0 0 30px #ffb347,
+        0 0 40px #ffb347,
+        0 0 55px #ffb347,
+        0 0 70px #ffb347;
+      color: #fff9d1;
+    }
+  }
+
+  @keyframes fadeIn {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+  }
+
+  /* Services */
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(300px,1fr));
+    gap: 2rem;
+  }
+
+  .service-card {
+    background: linear-gradient(135deg, #ffeaa7, #fab1a0);
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow:
+      0 4px 14px rgba(251,176,59,0.6),
+      0 1px 5px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: default;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding-bottom: 1.4rem;
+  }
+  .service-card:hover {
+    transform: translateY(-12px) scale(1.05);
+    box-shadow:
+      0 10px 26px rgba(251,176,59,0.9),
+      0 4px 12px rgba(0,0,0,0.12);
+  }
+
+  .service-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-bottom: 5px solid #ff793f;
+    border-radius: 12px 12px 0 0;
+    box-shadow: 0 0 12px #ffd3b6;
+  }
+
+  .service-card-content {
+    margin-top: 1rem;
+    padding: 0 1rem;
+    flex-grow: 1;
+  }
+  .service-card h3 {
+    margin-bottom: 0.6rem;
+    color: #d35400;
+    font-weight: 800;
+    font-size: 1.4rem;
+    letter-spacing: 0.04em;
+  }
+  .service-card p {
+    font-size: 1rem;
+    color: #3e3e3e;
+    font-weight: 600;
+    line-height: 1.3rem;
+  }
+
+  /* Animated SVG Graphics */
+  .decorative-svg {
+    position: absolute;
+    opacity: 0.15;
+    animation: floaty 10s ease-in-out infinite alternate;
+    pointer-events: none;
+    user-select: none;
+  }
+  .decorative-svg:nth-child(1) {
+    top: 15%;
+    left: -10%;
+    width: 150px;
+    height: 150px;
+    animation-delay: 0s;
+  }
+  .decorative-svg:nth-child(2) {
+    bottom: 15%;
+    right: -10%;
+    width: 200px;
+    height: 200px;
+    animation-delay: 5s;
+  }
+
+  @keyframes floaty {
+    0% {transform: translateY(0);}
+    100% {transform: translateY(20px);}
+  }
+
+  /* Join section */
+  .join-info {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+  }
+  form.join-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 420px;
+  }
+  form.join-form input, form.join-form textarea {
+    padding: 0.8rem 1rem;
+    border: 2px solid #ffc978;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    resize: none;
+    font-weight: 600;
+    transition: border-color 0.3s ease;
+  }
+  form.join-form input:focus,
+  form.join-form textarea:focus {
+    border-color: #ff793f;
+    outline: none;
+  }
+  form.join-form button {
+    background-color: #ff793f;
+    border: none;
+    color: white;
+    font-weight: 700;
+    font-size: 1.2rem;
+    padding: 0.85rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 5px 12px rgba(255,121,63,0.7);
+  }
+  form.join-form button:hover {
+    background-color: #d85c1a;
+  }
+  .form-message {
+    margin-top: 1rem;
+    font-weight: 700;
+    color: #27ae60;
+  }
+
+  /* Donate section */
+  .donate-info {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+  }
+  .donate-btn {
+    background-color: #004aad;
+    color: white;
+    padding: 0.9rem 2rem;
+    border: none;
+    font-weight: 800;
+    font-size: 1.2rem;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 6px 20px rgb(0 74 173 / 0.75);
+    transition: background-color 0.3s ease;
+    text-shadow: 0 0 8px #66a1ff;
+  }
+  .donate-btn:hover {
+    background-color: #002c6f;
+  }
+
+  footer {
+    background: #222f4b;
+    color: #cfd9e9;
+    text-align: center;
+    padding: 1.75rem 1rem;
+    font-size: 0.95rem;
+    margin-top: 5rem;
+    user-select: none;
+    box-shadow: inset 0 3px 7px #00000065;
+  }
+
+  /* Responsive */
+  @media (max-width: 690px) {
+    nav {
+      justify-content: center;
+      gap: 1rem;
+    }
+    nav a {
+      font-size: 0.95rem;
+      padding: 0.15rem 0.4rem;
+    }
+    .hero h1 {
+      font-size: 2rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    main {
+      padding: 2rem 1.5rem 3rem 1.5rem;
+    }
+    .service-card {
+      margin-bottom: 1rem;
+    }
+  }
+
+  /* Modal styles */
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 1100;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.6);
+  }
+  .modal-content {
+    background-color: white;
+    margin: 10% auto;
+    border-radius: 12px;
+    padding: 2.5rem 2.5rem 3rem 2.5rem;
+    max-width: 400px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+    position: relative;
+    font-family: 'Poppins', sans-serif;
+  }
+  .modal-content h2 {
+    color: #004aad;
+    margin-bottom: 1.4rem;
+    font-weight: 800;
+    font-size: 1.8rem;
+  }
+  .close-btn {
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: #555;
+    cursor: pointer;
+    transition: color 0.3s ease;
+  }
+  .close-btn:hover {
+    color: #ff793f;
+  }
+
+  .login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.3rem;
+  }
+
+  .login-form label {
+    font-weight: 700;
+    color: #444;
+  }
+
+  .login-form input {
+    padding: 0.7rem 1rem;
+    font-size: 1.1rem;
+    border: 2px solid #ffb347;
+    border-radius: 10px;
+    transition: border-color 0.3s ease;
+    font-weight: 600;
+  }
+  .login-form input:focus {
+    border-color: #ff793f;
+    outline: none;
+    box-shadow: 0 0 10px #ff793f70;
+  }
+
+  .login-form button {
+    background-color: #ff793f;
+    border: none;
+    color: white;
+    font-weight: 800;
+    padding: 0.65rem;
+    font-size: 1.3rem;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 6px 15px rgba(255,121,63,0.8);
+  }
+  .login-form button:hover {
+    background-color: #d85c1a;
+  }
+  .login-message {
+    font-weight: 700;
+    color: #27ae60;
+    margin-top: 1rem;
+    min-height: 2rem;
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+<header>
+  <h1>
+    <span class="lang-en active">Our Political Agenda</span>
+    <span class="lang-hi">हमारा राजनीतिक एजेंडा</span>
+  </h1>
+
+  <nav aria-label="Primary navigation">
+    <a href="#services" class="nav-link active" data-section="services"><span class="lang-en active">Services</span><span class="lang-hi">सेवाएं</span></a>
+    <a href="#plans" class="nav-link" data-section="plans"><span class="lang-en">Plans</span><span class="lang-hi">योजनाएँ</span></a>
+    <a href="#join" class="nav-link" data-section="join"><span class="lang-en">Join Us</span><span class="lang-hi">हमसे जुड़ें</span></a>
+    <a href="#donate" class="nav-link" data-section="donate"><span class="lang-en">Donate</span><span class="lang-hi">दान करें</span></a>
+  </nav>
+
+  <div class="lang-toggle" role="group" aria-label="Language toggle">
+    <button class="lang-btn active" id="btn-en" aria-pressed="true" aria-label="English language">EN</button>
+    <button class="lang-btn" id="btn-hi" aria-pressed="false" aria-label="Hindi language">HI</button>
+  </div>
+
+  <button id="loginBtn" aria-haspopup="dialog" aria-controls="loginModal"><span class="lang-en">Login</span><span class="lang-hi" style="display:none;">लॉगिन</span></button>
+</header>
+
+<main>
+  <section class="hero" aria-label="Site introduction">
+    <h1>
+      <span class="lang-en active">At your service, building a new India</span>
+      <span class="lang-hi">हम आपकी सेवा में, नए भारत का निर्माण</span>
+    </h1>
+    <p>
+      <span class="lang-en active">Cow care, animal welfare, and our plans for Delhi University</span>
+      <span class="lang-hi">गौ सेवा, जीव-जंतुओं की देखभाल और दिल्ली विश्वविद्यालय में हमारी योजनाएं</span>
+    </p>
+    <svg class="decorative-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <circle cx="50" cy="50" r="50" fill="#ffb347" />
+    </svg>
+    <svg class="decorative-svg" style="bottom: 10%; right: 10%;" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <rect width="100" height="100" rx="50" fill="#0078e7" />
+    </svg>
+  </section>
+
+  <section id="services" aria-labelledby="services-title">
+    <h2 id="services-title">
+      <span class="lang-en active">Our Services</span>
+      <span class="lang-hi">हमारी सेवाएं</span>
+    </h2>
+    <p>
+      <span class="lang-en active">We proudly offer these community services:</span>
+      <span class="lang-hi">हम समाज में गर्व से ये सेवाएं प्रदान कर रहे हैं:</span>
+    </p>
+    <div class="services-grid" role="list">
+
+      <article class="service-card" aria-label="Cow care service" role="listitem">
+        <img src="https://images.unsplash.com/photo-1523413651479-597eb2da0ad6?auto=format&fit=crop&w=600&q=80" alt="Cow" loading="lazy" />
+        <div class="service-card-content">
+          <h3>
+            <span class="lang-en active">Cow Care</span>
+            <span class="lang-hi">गौ सेवा</span>
+          </h3>
+          <p>
+            <span class="lang-en active">Dedicated to caring for and protecting cows in our community.</span>
+            <span class="lang-hi">हमारे समुदाय में गायों की सुरक्षा और देखभाल के लिए समर्पित।</span>
+          </p>
+        </div>
+      </article>
+
+      <article class="service-card" aria-label="Animal welfare service" role="listitem">
+        <img src="https://images.unsplash.com/photo-1558788353-f76d92427f16?auto=format&fit=crop&w=600&q=80" alt="Animals" loading="lazy" />
+        <div class="service-card-content">
+          <h3>
+            <span class="lang-en active">Animal Welfare</span>
+            <span class="lang-hi">जीव-जंतुओं की सेवा</span>
+          </h3>
+          <p>
+            <span class="lang-en active">Providing care and support to animals as our beloved family members.</span>
+            <span class="lang-hi">जीव-जंतुओं को परिवार के सदस्य की तरह देखभाल और सहायता प्रदान करना।</span>
+          </p>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <section id="plans" aria-labelledby="plans-title">
+    <h2 id="plans-title">
+      <span class="lang-en">Our Plans for Delhi University</span>
+      <span class="lang-hi">दिल्ली विश्वविद्यालय में हमारी योजनाएँ</span>
+    </h2>
+    <p>
+      <span class="lang-en">Plan details:</span>
+      <span class="lang-hi">हमारे योजना विवरण:</span>
+    </p>
+    <ul>
+      <li>
+        <span class="lang-en">Promote quality education and run cleanliness campaigns.</span>
+        <span class="lang-hi">शिक्षा के स्तर को बढ़ावा देना और स्वच्छता अभियान चलाना।</span>
+      </li>
+      <li>
+        <span class="lang-en">Provide resources for student employment and skill development.</span>
+        <span class="lang-hi">छात्रों के लिए रोजगार और कौशल विकास के संसाधन उपलब्ध कराना।</span>
+      </li>
+      <li>
+        <span class="lang-en">Encourage cultural and sports activities.</span>
+        <span class="lang-hi">संस्कृति और खेल गतिविधियों को प्रोत्साहित करना।</span>
+      </li>
+      <li>
+        <span class="lang-en">Establish strict security and student welfare centers.</span>
+        <span class="lang-hi">सुरक्षा के कड़े उपाय और छात्र कल्याण केंद्र स्थापित करना।</span>
+      </li>
+    </ul>
+  </section>
+
+  <section id="join" aria-labelledby="join-title">
+    <h2 id="join-title">
+      <span class="lang-en">Join Us</span>
+      <span class="lang-hi">हमसे जुड़ें</span>
+    </h2>
+    <p class="join-info">
+      <span class="lang-en">Fill in the form below to become a member of our crew:</span>
+      <span class="lang-hi">हमारे कार्य दल के सदस्य बनने के लिए नीचे विवरण भरें:</span>
+    </p>
+    <form class="join-form" aria-label="Join crew form">
+      <input type="text" id="name" name="name" placeholder="Name / नाम" required aria-required="true" />
+      <input type="email" id="email" name="email" placeholder="Email / ईमेल" required aria-required="true" />
+      <textarea id="message" name="message" rows="4" placeholder="How I want to work with you... / मैं आपके साथ कैसे काम करना चाहता हूँ..." required aria-required="true"></textarea>
+      <button type="submit">
+        <span class="lang-en">Join</span>
+        <span class="lang-hi">जुड़ें</span>
+      </button>
+      <p class="form-message" aria-live="polite" role="alert"></p>
+    </form>
+  </section>
+
+  <section id="donate" aria-labelledby="donate-title">
+    <h2 id="donate-title">
+      <span class="lang-en">Donate</span>
+      <span class="lang-hi">दान करें</span>
+    </h2>
+    <p class="donate-info">
+      <span class="lang-en">Support our campaign by donating. You can donate using the following details:</span>
+      <span class="lang-hi">हमारे अभियान को समर्थन देने के लिए कृपया दान करें। नीचे के विवरण से आप दान कर सकते हैं:</span>
+    </p>
+    <ul>
+      <li><span class="lang-en">UPI ID: 12345@bank</span><span class="lang-hi">UPI ID: 12345@bank</span></li>
+      <li><span class="lang-en">Account Name: Hamara Political Trust</span><span class="lang-hi">खाता नाम: हमारा राजनीतिक ट्रस्ट</span></li>
+      <li><span class="lang-en">Bank: State Bank of India</span><span class="lang-hi">बैंक: स्टेट बैंक ऑफ़ इंडिया</span></li>
+      <li><span class="lang-en">Account Number: 123456789012</span><span class="lang-hi">खाता संख्या: 123456789012</span></li>
+      <li><span class="lang-en">IFSC: SBIN0000123</span><span class="lang-hi">IFSC: SBIN0000123</span></li>
+    </ul>
+    <button class="donate-btn" id="copyButton">
+      <span class="lang-en">Copy UPI ID</span>
+      <span class="lang-hi">UPI ID कॉपी करें</span>
+    </button>
+    <p id="copySuccessMsg" style="color: #27ae60; font-weight: 700; margin-top: 0.6rem;" aria-live="polite"></p>
+  </section>
+</main>
+
+<footer>
+  <span class="lang-en">&copy; 2024 Our Political Agenda | Contact: <a href="mailto:contact@hamarapolitical.org">contact@hamarapolitical.org</a></span>
+  <span class="lang-hi" style="display:none;">&copy; 2024 हमारा राजनीतिक एजेंडा | संपर्क करें: <a href="mailto:contact@hamarapolitical.org">contact@hamarapolitical.org</a></span>
+</footer>
+
+<!-- Login Modal -->
+<div id="loginModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="loginTitle" aria-hidden="true">
+  <div class="modal-content">
+    <button class="close-btn" aria-label="Close login modal">&times;</button>
+    <h2 id="loginTitle">
+      <span class="lang-en">Login</span>
+      <span class="lang-hi">लॉगिन</span>
+    </h2>
+    <form id="loginForm" class="login-form" aria-label="Login form">
+      <label for="username">
+        <span class="lang-en">Username</span>
+        <span class="lang-hi">उपयोगकर्ता नाम</span>
+      </label>
+      <input type="text" id="username" name="username" placeholder="Username / उपयोगकर्ता नाम" required aria-required="true" />
+
+      <label for="password">
+        <span class="lang-en">Password</span>
+        <span class="lang-hi">पासवर्ड</span>
+      </label>
+      <input type="password" id="password" name="password" placeholder="Password / पासवर्ड" required aria-required="true" />
+
+      <button type="submit">
+        <span class="lang-en">Login</span>
+        <span class="lang-hi">लॉगिन</span>
+      </button>
+      <p class="login-message" aria-live="polite" role="alert"></p>
+    </form>
+  </div>
+</div>
+
+<script>
+  // Navigation link active on click + scroll highlight
+  const navLinks = document.querySelectorAll('nav a.nav-link');
+  const sections = ['services', 'plans', 'join', 'donate'];
+  navLinks.forEach(link => {
+    link.addEventListener('click', e => {
+      navLinks.forEach(l => l.classList.remove('active'));
+      e.target.classList.add('active');
+    });
+  });
+
+  // Language toggle handlers
+  const langEnBtn = document.getElementById('btn-en');
+  const langHiBtn = document.getElementById('btn-hi');
+  const langEnElems = document.querySelectorAll('.lang-en');
+  const langHiElems = document.querySelectorAll('.lang-hi');
+  const loginBtn = document.getElementById('loginBtn');
+
+  function setLanguage(lang) {
+    if (lang === 'en') {
+      langEnElems.forEach(e => e.classList.add('active'));
+      langHiElems.forEach(e => e.classList.remove('active'));
+      langEnBtn.classList.add('active');
+      langEnBtn.setAttribute('aria-pressed', 'true');
+      langHiBtn.classList.remove('active');
+      langHiBtn.setAttribute('aria-pressed', 'false');
+
+      // Header login button text
+      loginBtn.querySelector('.lang-en').style.display = '';
+      loginBtn.querySelector('.lang-hi').style.display = 'none';
+    } else {
+      langHiElems.forEach(e => e.classList.add('active'));
+      langEnElems.forEach(e => e.classList.remove('active'));
+      langHiBtn.classList.add('active');
+      langHiBtn.setAttribute('aria-pressed', 'true');
+      langEnBtn.classList.remove('active');
+      langEnBtn.setAttribute('aria-pressed', 'false');
+
+      // Header login button text
+      loginBtn.querySelector('.lang-en').style.display = 'none';
+      loginBtn.querySelector('.lang-hi').style.display = '';
+    }
+  }
+
+  langEnBtn.addEventListener('click', () => setLanguage('en'));
+  langHiBtn.addEventListener('click', () => setLanguage('hi'));
+
+  setLanguage('en'); // default language English
+
+  // Join form submission simulation
+  const joinForm = document.querySelector('.join-form');
+  const joinFormMessage = document.querySelector('.form-message');
+  joinForm.addEventListener('submit', e => {
+    e.preventDefault();
+    const enMsg = 'Thank you! Your application to join our crew has been successfully submitted. We will contact you soon.';
+    const hiMsg = 'धन्यवाद! आपने सफलतापूर्वक हमारे कार्य दल में जुड़ने के लिए आवेदन किया है। हम जल्द ही आपसे संपर्क करेंगे।';
+
+    if (langEnBtn.classList.contains('active')) {
+      joinFormMessage.textContent = enMsg;
+    } else {
+      joinFormMessage.textContent = hiMsg;
+    }
+    joinForm.reset();
+  });
+
+  // Copy UPI ID to clipboard on button click
+  const copyButton = document.getElementById('copyButton');
+  const copySuccessMsg = document.getElementById('copySuccessMsg');
+
+  copyButton.addEventListener('click', () => {
+    navigator.clipboard.writeText('12345@bank').then(() => {
+      const msgEn = 'UPI ID copied! Paste it in your UPI app to donate.';
+      const msgHi = 'UPI ID कॉपी हो गई है! दान करने के लिए इसे अपने UPI ऐप में पेस्ट करें।';
+      copySuccessMsg.textContent = langEnBtn.classList.contains('active') ? msgEn : msgHi;
+
+      setTimeout(() => {
+        copySuccessMsg.textContent = '';
+      }, 4000);
+    }).catch(() => {
+      const failMsgEn = 'Sorry, copy failed. Please copy manually.';
+      const failMsgHi = 'क्षमा करें, कॉपी करने में समस्या हुई। कृपया मैनुअल रूप से कॉपी करें।';
+      copySuccessMsg.textContent = langEnBtn.classList.contains('active') ? failMsgEn : failMsgHi;
+    });
+  });
+
+  // Login modal functionality
+  const loginBtnElem = document.getElementById('loginBtn');
+  const modal = document.getElementById('loginModal');
+  const closeBtn = modal.querySelector('.close-btn');
+  const loginForm = document.getElementById('loginForm');
+  const loginMessage = modal.querySelector('.login-message');
+
+  function openModal() {
+    modal.style.display = 'block';
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    modal.querySelector('#username').focus();
+  }
+
+  function closeModal() {
+    modal.style.display = 'none';
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    loginMessage.textContent = '';
+    loginForm.reset();
+  }
+
+  loginBtnElem.addEventListener('click', openModal);
+  closeBtn.addEventListener('click', closeModal);
+  window.addEventListener('click', e => {
+    if (e.target === modal) {
+      closeModal();
+    }
+  });
+
+  // Simulated login submit
+  loginForm.addEventListener('submit', e => {
+    e.preventDefault();
+    const username = loginForm.username.value.trim();
+    const password = loginForm.password.value.trim();
+
+    if (!username || !password) return;
+
+    // Fake login success message
+    const successMsgEn = \`Welcome, \${username}! You have logged in successfully.\`;
+    const successMsgHi = \`स्वागत है, \${username}! आप सफलतापूर्वक लॉगिन हो गए हैं।\`;
+
+    loginMessage.textContent = langEnBtn.classList.contains('active') ? successMsgEn : successMsgHi;
+
+    // Optionally close modal after delay
+    setTimeout(() => {
+      closeModal();
+    }, 2500);
+  });
+
+  // Highlight nav link on scroll for better UX
+  window.addEventListener('scroll', () => {
+    let scrollPos = window.scrollY || window.pageYOffset;
+    for (let sectionId of sections) {
+      const sectionElem = document.getElementById(sectionId);
+      if (!sectionElem) continue;
+      if (scrollPos >= sectionElem.offsetTop - 80 && scrollPos < sectionElem.offsetTop + sectionElem.offsetHeight) {
+        navLinks.forEach(l => l.classList.remove('active'));
+        const activeLink = [...navLinks].find(l => l.dataset.section === sectionId);
+        if (activeLink) activeLink.classList.add('active');
+        break;
+      }
+    }
+  });
+</script>
+</body>
+</html>
+
