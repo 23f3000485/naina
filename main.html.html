@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parcel Management</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    <h1>Parcel Management</h1>
+    <form id="parcel-form">
+        <input type="text" id="tracking-id" placeholder="Tracking ID" required>
+        <input type="text" id="description" placeholder="Description" required>
+        <button type="submit">Create Parcel</button>
+    </form>
+    <div id="parcel-list"></div>
+    <script>
+        const form = document.getElementById('parcel-form');
+        const parcelListDiv = document.getElementById('parcel-list');
+
+        // Load parcels on page load
+        async function loadParcels() {
+            const response = await axios.get('http://127.0.0.1:8000/parcels');
+            const parcels = response.data;
+            parcelListDiv.innerHTML = parcels.map(parcel => `<div>${parcel.tracking_id} - ${parcel.description}</div>`).join('');
+        }
+
+        form.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const trackingId = document.getElementById('tracking-id').value;
+            const description = document.getElementById('description').value;
+            await axios.post('http://127.0.0.1:8000/parcels', { tracking_id: trackingId, description });
+            loadParcels();
+            form.reset();
+        });
+
+        loadParcels();
+    </script>
+</body>
+</html>
